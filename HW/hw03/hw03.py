@@ -25,6 +25,9 @@ def num_eights(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    s = str(n)
+    count = s.count('8')
+    return count
 
 
 def digit_distance(n):
@@ -47,6 +50,11 @@ def digit_distance(n):
     True
     """
     "*** YOUR CODE HERE ***"
+    s = str(n)
+    adjacents = zip(s, s[1:])
+    distances = map(lambda pair: abs(int(pair[0]) - int(pair[1])), adjacents)
+    return sum(distances)
+
 
 
 def interleaved_sum(n, odd_func, even_func):

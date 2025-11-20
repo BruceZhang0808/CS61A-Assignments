@@ -13,6 +13,17 @@ def shuffle(s):
     """
     assert len(s) % 2 == 0, 'len(seq) must be even'
     "*** YOUR CODE HERE ***"
+    s = list(s)
+    n = len(s)
+    s1 = s[:int(n/2)]
+    s2 = s[int(n/2):]
+    result = []
+    for i in range(n):
+        if i % 2 == 0:
+            result.append(s2.pop())
+        else:
+            result.append(s1.pop())
+    return result[::-1]
 
 
 def deep_map(f, s):
