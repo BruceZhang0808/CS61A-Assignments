@@ -79,6 +79,14 @@ def interleaved_sum(n, odd_func, even_func):
     True
     """
     "*** YOUR CODE HERE ***"
+    def sum_from(k):
+        if k > n:
+            return 0
+        elif k == n:
+            return odd_func(k)
+        return odd_func(k) + even_func(k + 1) + sum_from(k + 2)
+    
+    return sum_from(1)
 
 
 def next_smaller_dollar(bill):

@@ -13,17 +13,24 @@ def shuffle(s):
     """
     assert len(s) % 2 == 0, 'len(seq) must be even'
     "*** YOUR CODE HERE ***"
-    s = list(s)
-    n = len(s)
-    s1 = s[:int(n/2)]
-    s2 = s[int(n/2):]
-    result = []
-    for i in range(n):
-        if i % 2 == 0:
-            result.append(s2.pop())
-        else:
-            result.append(s1.pop())
-    return result[::-1]
+    # s = list(s)
+    # n = len(s)
+    # s1 = s[:int(n/2)]
+    # s2 = s[int(n/2):]
+    # result = []
+    # for i in range(n):
+    #     if i % 2 == 0:
+    #         result.append(s2.pop())
+    #     else:
+    #         result.append(s1.pop())
+    # return result[::-1]
+
+    half = len(s) // 2
+    shuffled = []
+    for i in range(half):
+        shuffled.append(s[i])
+        shuffled.append(s[i + half])
+    return shuffled
 
 
 def deep_map(f, s):
@@ -49,6 +56,12 @@ def deep_map(f, s):
     True
     """
     "*** YOUR CODE HERE ***"
+    for i in range(len(s)):
+        elem = s[i]
+        if isinstance(elem, list):
+            deep_map(f, elem)
+        else:
+            s[i] = f(elem)
 
 
 HW_SOURCE_FILE=__file__
@@ -58,11 +71,13 @@ def planet(mass):
     """Construct a planet of some mass."""
     assert mass > 0
     "*** YOUR CODE HERE ***"
+    return ['planet', mass]
 
 def mass(p):
     """Select the mass of a planet."""
     assert is_planet(p), 'must call mass on a planet'
     "*** YOUR CODE HERE ***"
+    return p[1]
 
 def is_planet(p):
     """Whether p is a planet."""

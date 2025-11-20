@@ -24,10 +24,14 @@ def composite_identity(f, g):
 
 def sum_digits(y):
     """Return the sum of the digits of non-negative integer y."""
-    total = 0
-    while y > 0:
-        total, y = total + y % 10, y // 10
-    return total
+    # total = 0
+    # while y > 0:
+    #     total, y = total + y % 10, y // 10
+    # return total
+
+    if y < 10:
+        return y
+    return y % 10 + sum_digits(y // 10)
 
 def is_prime(n):
     """Return whether positive integer n is prime."""
